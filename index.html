@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Surah Yasin &amp; Tahlil Singkat - Buku Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ================= HALAMAN LOGIN ================= -->
+  <section id="login-view" class="login-wrapper">
+    <div class="login-card">
+      <!-- Pita Penanda di Atas -->
+      <div class="login-ribbon"></div>
+
+      <!-- Emblem Bintang Bersudut Delapan & Kaligrafi -->
+      <div class="login-emblem-wrap">
+        <div class="login-starburst"></div>
+        <div class="login-calligraphy">يس</div>
+      </div>
+
+      <h2 class="login-title" id="login-book-title">SURAH YASIN & TAHLIL SINGKAT</h2>
+      <p class="login-subtitle">Silakan masuk untuk membaca & mengelola buku panduan</p>
+
+      <form class="login-form" onsubmit="return handleLogin(event)">
+        <div id="login-error" class="error-msg hidden">Username atau password salah!</div>
+        
+        <div class="form-group">
+          <label for="login-username">Username</label>
+          <input type="text" id="login-username" class="form-control" value="" placeholder="Masukkan username..." required autocomplete="username">
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" class="form-control" value="" placeholder="Masukkan password..." required autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn-primary btn-full">Masuk ke Buku</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= APLIKASI UTAMA (BERANDA BUKU) ================= -->
+  <div id="app-view" class="app-container hidden">
+    <!-- Top Navbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <span class="brand-badge">يس</span>
+        <div>
+          <h2 id="nav-book-title">Surah Yasin &amp; Tahlil Singkat</h2>
+          <span class="sync-status" id="sync-indicator">● Tersimpan Lokal</span>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <button type="button" id="btn-toc" class="btn-nav" title="Daftar Isi">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          <span>Daftar Isi</span>
+        </button>
+        <button type="button" id="btn-settings" class="btn-nav btn-accent" title="Pengaturan Aplikasi">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Pengaturan</span>
+        </button>
+        <button type="button" id="btn-logout" class="btn-nav btn-danger" title="Keluar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          <span>Logout</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Area Pembaca Buku -->
+    <main class="reader-stage">
+      <button type="button" id="btn-prev" class="page-arrow arrow-left" aria-label="Halaman Sebelumnya">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <div id="book-spread" class="book-spread">
+        <!-- Halaman buku dirender lewat JavaScript -->
+      </div>
+
+      <button type="button" id="btn-next" class="page-arrow arrow-right" aria-label="Halaman Berikutnya">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </main>
+
+    <!-- Navigasi Bawah -->
+    <footer class="reader-footer">
+      <button type="button" id="btn-first-page" class="btn-sm">« Sampul</button>
+      <div class="page-indicator">
+        <span id="page-status-text">Sampul Depan</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ================= MODAL DAFTAR ISI ================= -->
+  <div id="toc-modal" class="modal-backdrop hidden">
+    <div class="modal-box modal-sm">
+      <div class="modal-header">
+        <h3>Daftar Isi Buku</h3>
+        <button type="button" class="btn-close" data-close="toc-modal">&times;</button>
+      </div>
+      <div class="modal-body" id="toc-list"></div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL VERIFIKASI SANDI PENGATURAN ================= -->
+  <div id="settings-pin-modal" class="modal-backdrop hidden">
+    <div class="modal-box modal-sm">
+      <div class="modal-header">
+        <h3>Verifikasi Keamanan Pengaturan</h3>
+        <button type="button" class="btn-close" data-close="settings-pin-modal">&times;</button>
+      </div>
+      <form id="settings-pin-form" class="modal-body settings-form" onsubmit="return handleSettingsPin(event)">
+        <div class="info-banner">
+          Silakan masukkan kata sandi pengaturan. Jika Anda lupa atau belum memiliki kata sandi, silakan hubungi pembuat aplikasi ini.
+        </div>
+        <div class="form-group">
+          <label for="settings-pin-input">Kata Sandi Pengaturan</label>
+          <div class="password-input-wrap">
+            <input type="password" id="settings-pin-input" class="form-control" placeholder="Masukkan kata sandi..." required autocomplete="current-password" />
+            <button type="button" id="toggle-pin-visibility" class="password-toggle-btn" title="Tampilkan/Sembunyikan Sandi">
+              <svg id="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="settings-pin-error" class="error-msg hidden">Kata sandi salah!</div>
+        <div class="form-actions">
+          <button type="button" class="btn-outline" data-close="settings-pin-modal">Batal</button>
+          <button type="submit" class="btn-primary">Masuk Pengaturan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= MODAL PENGATURAN APLIKASI ================= -->
+  <div id="settings-modal" class="modal-backdrop hidden">
+    <div class="modal-box modal-lg">
+      <div class="modal-header">
+        <h3>Pengaturan Aplikasi &amp; Isi Buku</h3>
+        <button type="button" class="btn-close" data-close="settings-modal">&times;</button>
+      </div>
+
+      <div class="settings-tabs">
+        <button type="button" class="tab-btn active" data-tab="tab-panduan">1. Pengaturan Panduan (Isi)</button>
+        <button type="button" class="tab-btn" data-tab="tab-judul">2. Pengaturan Judul Buku</button>
+        <button type="button" class="tab-btn" data-tab="tab-admin">3. Pengaturan Admin</button>
+      </div>
+
+      <div class="modal-body settings-content">
+        <div id="tab-panduan" class="tab-pane active">
+          <div class="section-toolbar">
+            <div class="section-selector-wrap">
+              <label for="section-select">Pilih Bagian / Bab:</label>
+              <select id="section-select" class="form-control"></select>
+            </div>
+            <div class="toolbar-buttons">
+              <button type="button" id="btn-add-section" class="btn-outline btn-sm-dark">+ Tambah Bab</button>
+              <button type="button" id="btn-edit-section-title" class="btn-outline btn-sm-dark">Ubah Judul Bab</button>
+              <button type="button" id="btn-delete-section" class="btn-danger-outline btn-sm-dark">🗑️ Hapus Bab</button>
+              <button type="button" id="btn-add-item" class="btn-primary btn-sm-dark">+ Tambah Nomor Bacaan</button>
+            </div>
+          </div>
+    
+          <div class="info-banner">
+            Isi bacaan (Arab, Latin, &amp; Terjemahan) di bawah ini akan otomatis tersusun rapi ke dalam halaman buku.
+          </div>
+    
+          <div id="items-editor-list" class="items-editor-list"></div>
+        </div>
+    
+        <div id="tab-judul" class="tab-pane hidden">
+          <form id="book-meta-form" class="settings-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="meta-title">Judul Utama Sampul Depan</label>
+                <input type="text" id="meta-title" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="meta-subtitle">Sub-Judul / Slogan Sampul</label>
+                <input type="text" id="meta-subtitle" class="form-control" />
+              </div>
+            </div>
+    
+            <div class="form-row">
+              <div class="form-group">
+                <label for="meta-author">Nama Penyusun (Sampul Bawah)</label>
+                <input type="text" id="meta-author" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="meta-publisher">Penerbit / Keterangan Cetakan</label>
+                <input type="text" id="meta-publisher" class="form-control" />
+              </div>
+            </div>
+    
+            <div class="form-group">
+              <label for="meta-preface">Kata Pengantar / Catatan Halaman ii</label>
+              <textarea id="meta-preface" rows="3" class="form-control"></textarea>
+            </div>
+    
+            <div class="form-group">
+              <label for="meta-items-per-page">Jumlah Nomor Bacaan per Halaman</label>
+              <select id="meta-items-per-page" class="form-control">
+                <option value="2">2 Nomor per Halaman (Huruf Lebih Besar)</option>
+                <option value="3" selected>3 Nomor per Halaman (Standar Buku Saku)</option>
+                <option value="4">4 Nomor per Halaman (Padat)</option>
+              </select>
+            </div>
+    
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">Simpan Pengaturan Judul</button>
+            </div>
+          </form>
+        </div>
+    
+        <div id="tab-admin" class="tab-pane hidden">
+          <form id="admin-cred-form" class="settings-form">
+            <div class="info-banner">
+              Ubah username dan password untuk login ke aplikasi buku ini.
+            </div>
+            <div class="form-group">
+              <label for="admin-new-user">Username Baru</label>
+              <input type="text" id="admin-new-user" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="admin-new-pass">Password Baru</label>
+              <input type="password" id="admin-new-pass" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="admin-confirm-pass">Konfirmasi Password Baru</label>
+              <input type="password" id="admin-confirm-pass" class="form-control" required />
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">Simpan Akun Admin</button>
+            </div>
+          </form>
+    
+          <hr class="divider" />
+    
+          <div class="backup-zone">
+            <h4>Backup &amp; Restore Data Buku (JSON)</h4>
+            <p class="text-muted">Gunakan fitur ini untuk memindahkan isi buku yang sudah Anda buat ke HP/laptop lain atau link berbeda.</p>
+            <div class="backup-buttons">
+              <button type="button" id="btn-export-json" class="btn-outline">Export Data (.json)</button>
+              <label class="btn-outline file-upload-btn">
+                Import Data (.json)
+                <input type="file" id="input-import-json" accept=".json" hidden />
+              </label>
+              <button type="button" id="btn-reset-default" class="btn-danger-outline">Reset ke Default</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL FORM EDIT / TAMBAH BACAAN ================= -->
+  <div id="item-form-modal" class="modal-backdrop hidden">
+    <div class="modal-box modal-md">
+      <div class="modal-header">
+        <h3 id="item-modal-title">Edit Nomor Bacaan</h3>
+        <button type="button" class="btn-close" data-close="item-form-modal">&times;</button>
+      </div>
+      <form id="item-editor-form" class="modal-body settings-form">
+        <input type="hidden" id="edit-item-index" />
+        <div class="form-group">
+          <label for="edit-item-number">Nomor Urut</label>
+          <input type="number" id="edit-item-number" class="form-control" min="1" required />
+        </div>
+        <div class="form-group">
+          <label for="edit-item-arabic">Teks Arab</label>
+          <textarea id="edit-item-arabic" rows="3" class="form-control arabic-input" dir="rtl" placeholder="Masukkan teks Arab di sini..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="edit-item-latin">Teks Transliterasi (Latin)</label>
+          <textarea id="edit-item-latin" rows="3" class="form-control" placeholder="Masukkan bacaan latin di sini..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="edit-item-translation">Arti / Terjemahan Indonesia</label>
+          <textarea id="edit-item-translation" rows="3" class="form-control" placeholder="Masukkan arti atau keterangan bacaan..."></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn-outline" data-close="item-form-modal">Batal</button>
+          <button type="submit" class="btn-primary">Simpan Bacaan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Kontainer Khusus Cetak (Layout Buku Fisik) -->
+  <div id="print-section" class="print-container"></div>
+
+  <!-- Toast Notifikasi -->
+  <div id="toast" class="toast hidden">Tersimpan!</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
