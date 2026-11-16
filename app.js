@@ -1,5 +1,5 @@
 /* ==========================================================================
-   APLIKASI BUKU DIGITAL: SURAH YASIN & TAHLIL SINGKAT
+   APLIKASI BUKU DIGITAL: SURAH YASIN & TAHLIL
    ========================================================================== */
 
 const STORAGE_KEY_DATA = 'yasin_tahlil_book_data_v3'; 
@@ -33,7 +33,7 @@ const safeStore = {
 function buildInitialBookData() {
   return {
     meta: {
-      title: 'SURAH YASIN & TAHLIL SINGKAT',
+      title: 'SURAH YASIN & TAHLIL',
       subtitle: 'Mengalirkan Doa, Menyambung Cinta',
       author: 'PENYUSUN / KELUARGA',
       publisher: 'Cetakan Digital • Panduan Tahlil & Doa',
@@ -58,7 +58,7 @@ function loadBookData() {
       if (parsed && typeof parsed === 'object') {
         return {
           meta: Object.assign({
-            title: 'SURAH YASIN & TAHLIL SINGKAT',
+            title: 'SURAH YASIN & TAHLIL',
             subtitle: 'Mengalirkan Doa, Menyambung Cinta',
             author: 'PENYUSUN / KELUARGA',
             publisher: 'Cetakan Digital',
