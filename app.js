@@ -2,10 +2,6 @@
    APLIKASI BUKU DIGITAL: SURAH YASIN & TAHLIL SINGKAT
    ========================================================================== */
 
-   /* ==========================================================================
-   APLIKASI BUKU DIGITAL: SURAH YASIN & TAHLIL SINGKAT
-   ========================================================================== */
-
 const STORAGE_KEY_DATA = 'yasin_tahlil_book_data_v3'; 
 const STORAGE_KEY_AUTH = 'yasin_tahlil_auth_creds_v1';
 const STORAGE_KEY_SESSION = 'yasin_tahlil_session_logged_in_v1';
@@ -236,7 +232,7 @@ function renderBookSpread() {
 
     statusEl.textContent =
       currentSpreadIndex === 0
-        ? 'Sampul Depan (Klik buku untuk membuka)'
+        ? 'Sampul Depan (Ketuk buku untuk membuka)'
         : `Halaman ${pageObj.pageLabel} dari ${generatedPages.length - 2}`;
 
     btnPrev.disabled = currentSpreadIndex === 0;
@@ -279,7 +275,7 @@ function createPageElement(pageObj, sideClass) {
       <div class="cover-subtitle-pill">${escapeHtml(bookData.meta.subtitle)}</div>
       <div class="cover-mosque-bg"></div>
       <div class="cover-author">${escapeHtml(bookData.meta.author)}</div>
-      <div class="cover-tap-hint">Klik untuk membuka halaman pertama →</div>
+      <div class="cover-tap-hint">Ketuk untuk membuka halaman pertama →</div>
     `;
     pageDiv.addEventListener('click', () => goNextPage());
     return pageDiv;
@@ -547,10 +543,6 @@ function bindEvents() {
 
   document.getElementById('btn-next').addEventListener('click', goNextPage);
   document.getElementById('btn-prev').addEventListener('click', goPrevPage);
-  document.getElementById('btn-first-page').addEventListener('click', () => {
-    currentSpreadIndex = 0;
-    renderBookSpread();
-  });
 
   document.addEventListener('keydown', (e) => {
     if (!document.getElementById('settings-modal').classList.contains('hidden')) return;
