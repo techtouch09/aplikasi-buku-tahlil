@@ -222,16 +222,6 @@ body {
   background: #fef2f2;
 }
 
-.btn-sm {
-  padding: 6px 12px;
-  font-size: 0.8rem;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  cursor: pointer;
-}
-
 .btn-sm-dark {
   padding: 7px 12px;
   font-size: 0.8rem;
@@ -351,36 +341,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: 8px 12px;
   position: relative;
   overflow: hidden;
-}
-
-/* Tombol panah di bawah (dalam footer) */
-.page-arrow {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  flex-shrink: 0;
-}
-
-.page-arrow:hover:not(:disabled) {
-  background: var(--gold-accent);
-  color: #1a1a1a;
-  transform: scale(1.08);
-}
-
-.page-arrow:disabled {
-  opacity: 0.2;
-  cursor: not-allowed;
 }
 
 .book-spread {
@@ -388,8 +351,8 @@ body {
   justify-content: center;
   align-items: stretch;
   width: 100%;
-  max-width: 960px;
-  height: 610px; /* Dipertinggi agar memaksimalkan ruang kosong */
+  max-width: 980px;
+  height: 82vh; /* Diperpanjang dan responsive mengisi ruang layar */
   perspective: 1600px;
 }
 
@@ -397,7 +360,7 @@ body {
 .book-page {
   background: var(--paper-bg);
   width: 50%;
-  max-width: 470px;
+  max-width: 490px;
   height: 100%;
   position: relative;
   display: flex;
@@ -434,7 +397,7 @@ body {
 
 .book-spread.single-mode .book-page {
   width: 100%;
-  max-width: 460px;
+  max-width: 520px;
   border-radius: 8px;
 }
 
@@ -607,12 +570,11 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  overflow-y: scroll; /* Memastikan scrollbar selalu dirender */
-  scrollbar-width: thin; /* Untuk Firefox */
+  overflow-y: scroll; /* Scrollbar selalu tampil */
+  scrollbar-width: thin;
   scrollbar-color: var(--maroon-main) #e2e8f0;
 }
 
-/* Kustomisasi scrollbar WebKit (Chrome, Safari, Edge, HP) agar selalu terlihat jelas */
 .page-inner-content::-webkit-scrollbar {
   width: 6px;
 }
@@ -727,17 +689,48 @@ body {
   padding-top: 8px;
 }
 
-/* ================= FOOTER NAVIGASI BAWAH ================= */
-.reader-footer {
-  background: rgba(20, 23, 28, 0.92);
+/* ================= FOOTER NAVIGASI BAWAH (PANAH KIRI-KANAN) ================= */
+.reader-footer.bottom-nav-footer {
+  background: rgba(20, 23, 28, 0.95);
   color: #e2e8f0;
-  padding: 10px 16px;
+  padding: 8px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  font-size: 0.82rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-arrow {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.page-arrow:hover:not(:disabled) {
+  background: var(--gold-accent);
+  color: #1a1a1a;
+  transform: scale(1.08);
+}
+
+.page-arrow:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.page-indicator {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  letter-spacing: 0.5px;
 }
 
 /* ================= MODALS & SETTINGS ================= */
@@ -1070,12 +1063,12 @@ body {
   }
 
   .reader-stage {
-    padding: 8px;
+    padding: 6px;
   }
 
   .book-spread,
   .book-page {
-    height: 80vh; /* Mempertinggi area buku di perangkat mobile agar proporsional */
+    height: 84vh; /* Responsive dan mengisi layar mobile dengan pas */
     width: 100%;
     max-width: 100%;
   }
