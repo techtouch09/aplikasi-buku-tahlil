@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Surah Yasin &amp; Tahlil - Buku Digital</title>
+  <title>Surah Yasin &amp; Tahlil Singkat - Buku Digital</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -14,10 +14,7 @@
   <!-- ================= HALAMAN LOGIN ================= -->
   <section id="login-view" class="login-wrapper">
     <div class="login-card">
-      <!-- Pita Penanda di Atas -->
       <div class="login-ribbon"></div>
-
-      <!-- Emblem Bintang Bersudut Delapan & Kaligrafi -->
       <div class="login-emblem-wrap">
         <div class="login-starburst"></div>
         <div class="login-calligraphy">يس</div>
@@ -51,7 +48,7 @@
       <div class="topbar-left">
         <span class="brand-badge">يس</span>
         <div>
-          <h2 id="nav-book-title">Surah Yasin &amp; Tahlil</h2>
+          <h2 id="nav-book-title">Surah Yasin &amp; Tahlil Singkat</h2>
           <span class="sync-status" id="sync-indicator">● Tersimpan Lokal</span>
         </div>
       </div>
@@ -74,25 +71,24 @@
 
     <!-- Area Pembaca Buku -->
     <main class="reader-stage">
-      <button type="button" id="btn-prev" class="page-arrow arrow-left" aria-label="Halaman Sebelumnya">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-
       <div id="book-spread" class="book-spread">
         <!-- Halaman buku dirender lewat JavaScript -->
       </div>
-
-      <button type="button" id="btn-next" class="page-arrow arrow-right" aria-label="Halaman Berikutnya">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
     </main>
 
-    <!-- Navigasi Bawah -->
-    <footer class="reader-footer">
-      <button type="button" id="btn-first-page" class="btn-sm">« Sampul</button>
+    <!-- Navigasi Bawah (Hanya Panah Kiri-Kanan & Indikator Halaman) -->
+    <footer class="reader-footer bottom-nav-footer">
+      <button type="button" id="btn-prev" class="page-arrow arrow-left-bottom" aria-label="Halaman Sebelumnya">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
       <div class="page-indicator">
         <span id="page-status-text">Sampul Depan</span>
       </div>
+
+      <button type="button" id="btn-next" class="page-arrow arrow-right-bottom" aria-label="Halaman Berikutnya">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </footer>
   </div>
 
@@ -290,7 +286,7 @@
     </div>
   </div>
 
-  <!-- Kontainer Khusus Cetak (Layout Buku Fisik) -->
+  <!-- Kontainer Khusus Cetak -->
   <div id="print-section" class="print-container"></div>
 
   <!-- Toast Notifikasi -->
